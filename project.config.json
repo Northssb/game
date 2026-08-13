@@ -1,0 +1,13 @@
+{
+  "appid": "touristappid",
+  "compileType": "game",
+  "projectname": "game",
+  "description": "微信小游戏开发骨架",
+  "setting": {
+    "es6": true,
+    "enhance": true,
+    "postcss": true,
+    "minified": true,
+    "urlCheck": true
+  }
+}

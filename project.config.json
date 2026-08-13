@@ -1,6 +1,6 @@
 {
   "appid": "touristappid",
-  "compileType": "game",
+  "compileType": "minigame",
   "projectname": "game",
   "description": "微信小游戏开发骨架",
   "setting": {

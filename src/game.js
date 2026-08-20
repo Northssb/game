@@ -7,6 +7,7 @@ function getViewport() {
 }
 
 function startGame() {
+  const ABC = 1;
   const viewport = getViewport();
   const pixelRatio = viewport.pixelRatio || 1;
   const width = viewport.windowWidth;

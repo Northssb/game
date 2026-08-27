@@ -1,0 +1,111 @@
+<view class="page">
+  <view class="profile-card">
+    <view class="profile-decoration"></view>
+    <view class="profile-main">
+      <view class="avatar">
+        {{profile.initial}}
+        <view class="pigeon-badge" wx:if="{{profile.historicalNoShows}}">鸽 {{profile.historicalNoShows}}</view>
+      </view>
+      <view class="identity">
+        <view class="name">{{profile.name}}</view>
+        <view class="location">{{profile.city}} · {{profile.district}}</view>
+        <view class="tag-row">
+          <view class="profile-tag" wx:for="{{profile.tags}}" wx:key="*this">{{item}}</view>
+        </view>
+      </view>
+    </view>
+
+    <view class="stats-row">
+      <view class="stat-item">
+        <view class="stat-value">{{profile.completedCount}}</view>
+        <view class="stat-label">完成球局</view>
+      </view>
+      <view class="stat-divider"></view>
+      <view class="stat-item">
+        <view class="stat-value">{{profile.attendanceRate}}%</view>
+        <view class="stat-label">履约率</view>
+      </view>
+      <view class="stat-divider"></view>
+      <view class="stat-item">
+        <view class="stat-value">{{profile.historicalNoShows}}</view>
+        <view class="stat-label">历史爽约</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="section-card rating-card">
+    <view class="section-heading">
+      <view>
+        <view class="section-kicker">实力档案</view>
+        <view class="section-title">中羽等级</view>
+      </view>
+      <button class="text-button" bindtap="openRating">重新测评 ›</button>
+    </view>
+
+    <view class="rating-row">
+      <view class="rating-block primary-rating">
+        <view class="rating-number">{{profile.selfLevel}}</view>
+        <view class="rating-label">自评等级</view>
+      </view>
+      <view class="rating-connector"></view>
+      <view class="rating-block secondary-rating">
+        <view class="rating-number">{{profile.assessmentLevel}}</view>
+        <view class="rating-label">问卷评估</view>
+      </view>
+    </view>
+    <view class="feedback-row">
+      <view class="feedback-dot"></view>
+      <text>球友反馈：{{profile.assessmentLabel}}</text>
+    </view>
+  </view>
+
+  <view class="section-card credit-card">
+    <view class="section-heading">
+      <view>
+        <view class="section-kicker">信用记录</view>
+        <view class="section-title">历史爽约 {{profile.historicalNoShows}} 次</view>
+      </view>
+      <view class="privacy-pill">人工审核</view>
+    </view>
+    <view class="credit-explain">只有上传图片证据并经管理员审核成立的爽约才会累计为历史信用记录。</view>
+  </view>
+
+  <view class="section-card contact-card">
+    <view class="section-heading">
+      <view>
+        <view class="section-kicker">联系方式</view>
+        <view class="section-title">仅审核通过后显示</view>
+      </view>
+      <view class="privacy-pill">受保护</view>
+    </view>
+    <view class="contact-row">
+      <view class="contact-type">微信</view>
+      <view class="contact-value">{{profile.wechat}}</view>
+    </view>
+    <view class="contact-row">
+      <view class="contact-type">手机</view>
+      <view class="contact-value">{{profile.phoneMasked}}</view>
+    </view>
+    <view class="contact-note">球局结束24小时后，对方将无法继续从该球局查看联系方式。</view>
+  </view>
+
+  <view class="menu-card">
+    <view class="menu-row" data-name="举报与申诉" bindtap="showPrototypeNotice">
+      <view class="menu-icon">审</view>
+      <view class="menu-label">举报与申诉</view>
+      <view class="menu-arrow">›</view>
+    </view>
+    <view class="menu-row" data-name="黑名单" bindtap="showPrototypeNotice">
+      <view class="menu-icon">屏</view>
+      <view class="menu-label">黑名单</view>
+      <view class="menu-arrow">›</view>
+    </view>
+    <view class="menu-row last-menu" data-name="通知设置" bindtap="showPrototypeNotice">
+      <view class="menu-icon">铃</view>
+      <view class="menu-label">通知设置</view>
+      <view class="menu-arrow">›</view>
+    </view>
+  </view>
+
+  <view class="safe-bottom"></view>
+</view>

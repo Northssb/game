@@ -1,0 +1,308 @@
+.page {
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding: 28rpx;
+}
+
+.page-heading {
+  padding: 10rpx 4rpx 28rpx;
+}
+
+.heading-kicker {
+  color: #1d6a46;
+  font-size: 22rpx;
+  font-weight: 600;
+  letter-spacing: 4rpx;
+}
+
+.heading-title {
+  margin-top: 12rpx;
+  font-size: 38rpx;
+  font-weight: 700;
+}
+
+.tabs {
+  display: flex;
+  margin-bottom: 24rpx;
+  padding: 7rpx;
+  border-radius: 26rpx;
+  background: #e6ece7;
+}
+
+.tab {
+  flex: 1;
+  padding: 18rpx 0;
+  border-radius: 20rpx;
+  color: #68736b;
+  font-size: 24rpx;
+  text-align: center;
+}
+
+.tab-active {
+  background: #ffffff;
+  box-shadow: 0 6rpx 18rpx rgba(33, 67, 44, 0.08);
+  color: #1c4d35;
+  font-weight: 700;
+}
+
+.tab-count {
+  margin-left: 5rpx;
+  font-size: 19rpx;
+}
+
+.game-card {
+  margin-bottom: 24rpx;
+  padding: 28rpx;
+  border: 1rpx solid #e0e7e1;
+  border-radius: 30rpx;
+  background: #ffffff;
+  box-shadow: 0 12rpx 32rpx rgba(35, 65, 45, 0.05);
+}
+
+.card-top,
+.contact-row,
+.action-row,
+.organizer-summary,
+.applicant-row,
+.review-actions {
+  display: flex;
+  align-items: center;
+}
+
+.card-top,
+.contact-row {
+  justify-content: space-between;
+}
+
+.type-label,
+.status-pill {
+  padding: 8rpx 17rpx;
+  border-radius: 18rpx;
+  font-size: 20rpx;
+  font-weight: 600;
+}
+
+.type-label {
+  background: #e7f3ea;
+  color: #24704c;
+}
+
+.status-waiting {
+  background: #fff2dd;
+  color: #9a6927;
+}
+
+.status-success {
+  background: #e6f4e9;
+  color: #27744e;
+}
+
+.game-title {
+  margin-top: 22rpx;
+  font-size: 32rpx;
+  font-weight: 700;
+}
+
+.game-meta {
+  margin-top: 12rpx;
+  color: #768078;
+  font-size: 22rpx;
+}
+
+.contact-row {
+  margin-top: 24rpx;
+  padding: 20rpx 22rpx;
+  border-radius: 19rpx;
+  background: #edf7ef;
+}
+
+.contact-label {
+  color: #397251;
+  font-size: 20rpx;
+}
+
+.contact-value {
+  margin-top: 7rpx;
+  color: #1d5337;
+  font-size: 23rpx;
+  font-weight: 600;
+}
+
+.copy-label {
+  color: #1d6a46;
+  font-size: 21rpx;
+  font-weight: 600;
+}
+
+.action-row {
+  justify-content: flex-end;
+  margin-top: 24rpx;
+}
+
+.action-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 190rpx;
+  height: 72rpx;
+  margin-left: 16rpx;
+  border-radius: 23rpx;
+  font-size: 23rpx;
+  font-weight: 600;
+}
+
+.ghost-button {
+  border: 1rpx solid #d6ded7;
+  background: #ffffff;
+  color: #667168;
+}
+
+.organizer-summary {
+  justify-content: space-around;
+  margin-top: 24rpx;
+  padding: 22rpx 0;
+  border-radius: 22rpx;
+  background: #f6f9f6;
+}
+
+.summary-item {
+  flex: 1;
+  text-align: center;
+}
+
+.summary-number {
+  color: #214a34;
+  font-size: 29rpx;
+  font-weight: 700;
+}
+
+.summary-label {
+  margin-top: 6rpx;
+  color: #89928b;
+  font-size: 19rpx;
+}
+
+.summary-divider {
+  width: 1rpx;
+  height: 48rpx;
+  background: #dce4dd;
+}
+
+.applicant-section {
+  margin-top: 26rpx;
+}
+
+.subheading {
+  color: #58635b;
+  font-size: 22rpx;
+  font-weight: 600;
+}
+
+.applicant-row {
+  margin-top: 16rpx;
+  padding-top: 18rpx;
+  border-top: 1rpx solid #edf1ed;
+}
+
+.applicant-avatar {
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 64rpx;
+  height: 64rpx;
+  margin-right: 16rpx;
+  border-radius: 21rpx;
+  background: #e1eee5;
+  color: #286044;
+  font-size: 23rpx;
+  font-weight: 700;
+}
+
+.applicant-copy {
+  flex: 1;
+  min-width: 0;
+}
+
+.applicant-name {
+  font-size: 22rpx;
+  font-weight: 600;
+}
+
+.applicant-credit,
+.applicant-contact {
+  margin-top: 6rpx;
+  color: #7e8880;
+  font-size: 18rpx;
+}
+
+.applicant-contact {
+  color: #28734e;
+}
+
+.applicant-contact.locked {
+  color: #9aa19c;
+}
+
+.review-actions {
+  flex-direction: column;
+  margin-left: 14rpx;
+}
+
+.mini-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 92rpx;
+  height: 50rpx;
+  border-radius: 17rpx;
+  font-size: 19rpx;
+}
+
+.reject-button {
+  border: 1rpx solid #dce2dd;
+  background: #ffffff;
+  color: #788178;
+}
+
+.approve-button {
+  margin-top: 8rpx;
+  background: #1d6a46;
+  color: #ffffff;
+}
+
+.reviewed-label {
+  color: #3b7757;
+  font-size: 20rpx;
+}
+
+.empty-state {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 120rpx 30rpx;
+}
+
+.empty-mark {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  background: #e1e9e2;
+  color: #54705c;
+  font-size: 36rpx;
+}
+
+.empty-title {
+  margin-top: 24rpx;
+  font-size: 28rpx;
+  font-weight: 700;
+}
+
+.empty-copy {
+  margin-top: 10rpx;
+  color: #89928b;
+  font-size: 21rpx;
+}

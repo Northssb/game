@@ -1,0 +1,119 @@
+<view class="page">
+  <view class="page-heading">
+    <view class="heading-kicker">球局管理</view>
+    <view class="heading-title">每一场约定，都有状态。</view>
+  </view>
+
+  <view class="tabs">
+    <view
+      class="tab {{selectedTab === 'joined' ? 'tab-active' : ''}}"
+      data-value="joined"
+      bindtap="selectTab"
+    >我参加的 <text class="tab-count">{{joinedGames.length}}</text></view>
+    <view
+      class="tab {{selectedTab === 'organized' ? 'tab-active' : ''}}"
+      data-value="organized"
+      bindtap="selectTab"
+    >我发起的 <text class="tab-count">{{organizedGames.length}}</text></view>
+  </view>
+
+  <view wx:if="{{selectedTab === 'joined'}}">
+    <view class="game-card" wx:for="{{joinedGames}}" wx:key="id">
+      <view class="card-top">
+        <view class="type-label">{{item.type}}</view>
+        <view class="status-pill {{item.statusTone}}">{{item.statusLabel}}</view>
+      </view>
+      <view class="game-title">{{item.title}}</view>
+      <view class="game-meta">{{item.dateLabel}} {{item.timeLabel}} · {{item.district}}</view>
+      <view class="game-meta">中羽 {{item.minLevel}}-{{item.maxLevel}} 级 · {{item.countText}}</view>
+
+      <view
+        class="contact-row"
+        wx:if="{{item.contactVisible}}"
+        data-id="{{item.id}}"
+        bindtap="copyContact"
+      >
+        <view>
+          <view class="contact-label">审核已通过，联系方式已解锁</view>
+          <view class="contact-value">{{item.organizer.contact}}</view>
+        </view>
+        <view class="copy-label">复制</view>
+      </view>
+
+      <view class="action-row" wx:if="{{item.showCancelButton}}">
+        <button
+          class="action-button ghost-button"
+          data-id="{{item.id}}"
+          bindtap="cancelParticipation"
+        >退出球局</button>
+      </view>
+    </view>
+
+    <view class="empty-state" wx:if="{{!joinedGames.length}}">
+      <view class="empty-mark">羽</view>
+      <view class="empty-title">还没有参加球局</view>
+      <view class="empty-copy">从首页找一个水平和时间都合适的球局吧</view>
+    </view>
+  </view>
+
+  <view wx:if="{{selectedTab === 'organized'}}">
+    <view class="game-card organizer-game" wx:for="{{organizedGames}}" wx:key="id" wx:for-index="gameIndex">
+      <view class="card-top">
+        <view class="type-label">{{item.type}}</view>
+        <view class="status-pill status-success">{{item.statusLabel}}</view>
+      </view>
+      <view class="game-title">{{item.title}}</view>
+      <view class="game-meta">{{item.dateLabel}} {{item.timeLabel}} · {{item.district}}</view>
+
+      <view class="organizer-summary">
+        <view class="summary-item">
+          <view class="summary-number">{{item.joinedCount}}/{{item.targetCount}}</view>
+          <view class="summary-label">已加入</view>
+        </view>
+        <view class="summary-divider"></view>
+        <view class="summary-item">
+          <view class="summary-number">{{item.pendingCount}}</view>
+          <view class="summary-label">待审核</view>
+        </view>
+        <view class="summary-divider"></view>
+        <view class="summary-item">
+          <view class="summary-number">{{item.vacancies}}</view>
+          <view class="summary-label">还缺</view>
+        </view>
+      </view>
+
+      <view class="applicant-section" wx:if="{{item.applicants.length}}">
+        <view class="subheading">申请者</view>
+        <view class="applicant-row" wx:for="{{item.applicants}}" wx:key="id" wx:for-item="applicant">
+          <view class="applicant-avatar">{{applicant.initial}}</view>
+          <view class="applicant-copy">
+            <view class="applicant-name">{{applicant.name}} · 中羽 {{applicant.level}} 级</view>
+            <view class="applicant-credit">履约 {{applicant.attendanceRate}}% · 已打 {{applicant.completedCount}} 场</view>
+            <view class="applicant-contact" wx:if="{{applicant.contactVisible}}">{{applicant.contact}}</view>
+            <view class="applicant-contact locked" wx:else>审核前联系方式隐藏</view>
+          </view>
+          <view class="review-actions" wx:if="{{applicant.actionable}}">
+            <button
+              class="mini-button reject-button"
+              data-game-id="{{item.id}}"
+              data-applicant-id="{{applicant.id}}"
+              data-action="reject"
+              bindtap="reviewApplicant"
+            >拒绝</button>
+            <button
+              class="mini-button approve-button"
+              data-game-id="{{item.id}}"
+              data-applicant-id="{{applicant.id}}"
+              data-action="approve"
+              bindtap="reviewApplicant"
+            >通过</button>
+          </view>
+          <view class="reviewed-label" wx:else>{{applicant.statusLabel}}</view>
+        </view>
+      </view>
+
+    </view>
+  </view>
+
+  <view class="safe-bottom"></view>
+</view>

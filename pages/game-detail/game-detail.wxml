@@ -1,0 +1,77 @@
+<view class="page" wx:if="{{game}}">
+  <view class="summary-card">
+    <view class="summary-top">
+      <view class="type-pill">{{game.type}}</view>
+      <view class="fill-pill">{{game.fillTag}}</view>
+    </view>
+    <view class="game-title">{{game.title}}</view>
+    <view class="summary-line">{{game.dateLabel}} {{game.weekdayLabel}} · {{game.timeLabel}}</view>
+    <view class="summary-line">{{game.district}} · {{game.areaHint}}</view>
+    <view class="level-pill">{{game.levelText}} · {{game.intensity}}</view>
+  </view>
+
+  <view class="content-card">
+    <view class="card-heading">
+      <view class="card-title">当前阵容</view>
+      <view class="card-meta">{{game.countText}} · {{game.pendingText}}</view>
+    </view>
+    <view class="member-list">
+      <view class="member-row" wx:for="{{game.members}}" wx:key="index">
+        <view class="member-avatar">{{item.initial}}</view>
+        <view class="member-name">{{item.name}}</view>
+        <view class="member-role">{{item.role}}</view>
+      </view>
+      <view class="vacancy-row" wx:if="{{game.vacancies}}">
+        <view class="member-avatar vacancy-avatar">+</view>
+        <view class="member-name">还差 {{game.vacancies}} 位球友</view>
+        <view class="member-role vacancy-role">招募中</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="content-card organizer-card">
+    <view class="card-title">组织者</view>
+    <view class="organizer-main">
+      <view class="organizer-avatar">
+        {{game.organizer.initial}}
+        <view class="pigeon-badge" wx:if="{{game.organizer.historicalNoShows}}">鸽 {{game.organizer.historicalNoShows}}</view>
+      </view>
+      <view class="organizer-copy">
+        <view class="organizer-name">{{game.organizer.name}} · 中羽 {{game.organizer.level}} 级</view>
+        <view class="organizer-credit">履约 {{game.organizer.attendanceRate}}% · 已完成 {{game.organizer.completedCount}} 场</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="content-card">
+    <view class="card-title">球局说明</view>
+    <view class="note-copy">{{game.note}}</view>
+    <view class="offline-notice">球馆、场地费和球费由参与者审核通过后线下协商。</view>
+  </view>
+
+  <view class="content-card contact-card {{canViewContact ? 'contact-card-open' : ''}}" bindtap="copyContact">
+    <view class="contact-icon">{{canViewContact ? '联' : '锁'}}</view>
+    <view class="contact-copy">
+      <view class="contact-title">{{canViewContact ? '组织者联系方式' : '联系方式暂未开放'}}</view>
+      <view class="contact-value" wx:if="{{canViewContact}}">{{game.organizer.contact}} · 点击复制</view>
+      <view class="contact-value" wx:else>申请审核通过后才会显示，球局结束24小时后隐藏</view>
+    </view>
+  </view>
+
+  <view class="rule-note">
+    <view class="rule-title">参加前请注意</view>
+    <view class="rule-copy">平台只负责找人和审核。通过后请在线下商定时间、场地和费用；如有人未按约到场，举报时需要上传图片证据并由管理员审核。</view>
+  </view>
+
+  <view class="action-spacer"></view>
+  <view class="bottom-action">
+    <view class="bottom-copy">
+      <view class="bottom-label">{{game.fillTag}}</view>
+      <view class="bottom-level">适合中羽 {{game.minLevel}}-{{game.maxLevel}} 级</view>
+    </view>
+    <button
+      class="apply-button {{applicationStatus !== 'none' ? 'apply-button-secondary' : ''}}"
+      bindtap="applyToGame"
+    >{{applicationLabel}}</button>
+  </view>
+</view>

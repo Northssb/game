@@ -1,12 +1,42 @@
 {
   "pages": [
-    "pages/index/index"
+    "pages/index/index",
+    "pages/create/create",
+    "pages/my-games/my-games",
+    "pages/profile/profile",
+    "pages/game-detail/game-detail",
+    "pages/rating/rating"
   ],
   "window": {
-    "navigationBarTitleText": "我的微信小程序",
-    "navigationBarBackgroundColor": "#101828",
-    "navigationBarTextStyle": "white",
-    "backgroundColor": "#101828"
+    "navigationBarTitleText": "羽球搭子",
+    "navigationBarBackgroundColor": "#f7faf7",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#f3f6f3",
+    "backgroundTextStyle": "dark"
+  },
+  "tabBar": {
+    "color": "#7b847c",
+    "selectedColor": "#196b45",
+    "backgroundColor": "#ffffff",
+    "borderStyle": "white",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "约球"
+      },
+      {
+        "pagePath": "pages/create/create",
+        "text": "发布"
+      },
+      {
+        "pagePath": "pages/my-games/my-games",
+        "text": "我的球局"
+      },
+      {
+        "pagePath": "pages/profile/profile",
+        "text": "我的"
+      }
+    ]
   },
   "sitemapLocation": "sitemap.json"
 }

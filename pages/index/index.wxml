@@ -1,6 +1,140 @@
 <view class="page">
-  <view class="title">我的微信小程序</view>
-  <view class="count">点击次数：{{count}}</view>
-  <button class="button" bindtap="increment">点击加一</button>
-  <view class="status">开发环境已准备完成</view>
+  <view class="topbar">
+    <view>
+      <view class="eyebrow">同城约球</view>
+      <view class="location-row">
+        <text class="location-dot"></text>
+        <text class="location">{{city}}</text>
+        <text class="location-note">只显示行政区</text>
+      </view>
+    </view>
+    <view class="level-badge">
+      <text class="level-number">{{userLevel}}</text>
+      <text class="level-copy">中羽等级</text>
+    </view>
+  </view>
+
+  <view class="hero-card">
+    <view class="hero-decoration hero-decoration-one"></view>
+    <view class="hero-decoration hero-decoration-two"></view>
+    <view class="hero-kicker">今晚，一起上场</view>
+    <view class="hero-title">找水平相近的球友，<br />少等人，多打球。</view>
+    <view class="hero-subtitle">系统只推荐球局，是否申请由你决定</view>
+    <button class="match-button" bindtap="quickMatch">
+      <text class="match-icon">↗</text>
+      <text>一键匹配球局</text>
+    </button>
+  </view>
+
+  <view class="filter-section">
+    <view class="section-heading">
+      <view>
+        <text class="section-title">找球局</text>
+        <text class="section-count">{{visibleGames.length}} 个合适</text>
+      </view>
+      <picker
+        mode="selector"
+        range="{{districtOptions}}"
+        value="{{selectedDistrictIndex}}"
+        bindchange="selectDistrict"
+      >
+        <view class="district-picker">{{selectedDistrict}}⌄</view>
+      </picker>
+    </view>
+
+    <scroll-view class="chip-scroll" scroll-x="true" enhanced="true" show-scrollbar="false">
+      <view class="chip-row">
+        <view
+          wx:for="{{dateOptions}}"
+          wx:key="*this"
+          class="filter-chip {{selectedDate === item ? 'filter-chip-active' : ''}}"
+          data-value="{{item}}"
+          bindtap="selectDate"
+        >{{item}}</view>
+      </view>
+    </scroll-view>
+
+    <scroll-view class="chip-scroll type-scroll" scroll-x="true" enhanced="true" show-scrollbar="false">
+      <view class="chip-row">
+        <view
+          wx:for="{{typeOptions}}"
+          wx:key="*this"
+          class="type-chip {{selectedType === item ? 'type-chip-active' : ''}}"
+          data-value="{{item}}"
+          bindtap="selectType"
+        >{{item}}</view>
+      </view>
+    </scroll-view>
+  </view>
+
+  <view class="game-list" wx:if="{{visibleGames.length}}">
+    <view
+      class="game-card"
+      wx:for="{{visibleGames}}"
+      wx:key="id"
+      data-id="{{item.id}}"
+      bindtap="openGame"
+    >
+      <view class="game-card-top">
+        <view class="type-pill {{item.typeClass}}">{{item.type}}</view>
+        <view class="fill-tag">{{item.fillTag}}</view>
+      </view>
+
+      <view class="game-title">{{item.title}}</view>
+
+      <view class="info-grid">
+        <view class="info-row">
+          <text class="info-icon">日</text>
+          <text>{{item.dateLabel}} {{item.weekdayLabel}} · {{item.timeLabel}}</text>
+        </view>
+        <view class="info-row">
+          <text class="info-icon">区</text>
+          <text>{{item.district}} · {{item.areaHint}}</text>
+        </view>
+        <view class="info-row">
+          <text class="info-icon">级</text>
+          <text>{{item.levelText}} · {{item.intensity}}</text>
+        </view>
+      </view>
+
+      <view class="roster-row">
+        <view class="avatar-stack">
+          <view
+            wx:for="{{item.members}}"
+            wx:for-item="member"
+            wx:key="index"
+            class="mini-avatar"
+          >{{member}}</view>
+          <view class="mini-avatar mini-avatar-empty" wx:if="{{item.vacancies}}">+{{item.vacancies}}</view>
+        </view>
+        <view class="roster-copy">
+          <text class="roster-count">{{item.countText}}</text>
+          <text class="pending-count">{{item.pendingText}}</text>
+        </view>
+      </view>
+
+      <view class="organizer-row">
+        <view class="organizer-profile">
+          <view class="organizer-avatar">
+            {{item.organizer.initial}}
+            <view class="pigeon-badge" wx:if="{{item.showNoShowBadge}}">鸽 {{item.organizer.historicalNoShows}}</view>
+          </view>
+          <view>
+            <view class="organizer-name">{{item.organizer.name}} <text class="organizer-role">组织者</text></view>
+            <view class="organizer-credit">{{item.creditText}}</view>
+          </view>
+        </view>
+        <view class="card-arrow">›</view>
+      </view>
+    </view>
+  </view>
+
+  <view class="empty-state" wx:else>
+    <view class="empty-mark">羽</view>
+    <view class="empty-title">暂时没有合适球局</view>
+    <view class="empty-copy">换个区域或类型试试，也可以自己发起</view>
+    <button class="empty-button" bindtap="resetFilters">重置筛选</button>
+  </view>
+
+  <view class="safe-bottom"></view>
 </view>

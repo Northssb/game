@@ -1,0 +1,69 @@
+<view class="page">
+  <view class="intro-card">
+    <view class="intro-kicker">中羽等级参考</view>
+    <view class="intro-title">了解你的技术习惯，<br />找到更合拍的球局。</view>
+    <view class="intro-copy">结果仅用于约球推荐，不是官方认证，也不记录比赛输赢。</view>
+    <view class="progress-row">
+      <view class="progress-track">
+        <view class="progress-value" style="width: {{answeredCount / questions.length * 100}}%;"></view>
+      </view>
+      <view class="progress-copy">{{answeredCount}} / {{questions.length}}</view>
+    </view>
+  </view>
+
+  <view class="result-card" wx:if="{{result}}">
+    <view class="result-mark">完成</view>
+    <view class="result-copy">
+      <view class="result-title">问卷评估：中羽 {{result.assessmentLevel}} 级</view>
+      <view class="result-subtitle">你的自评为中羽 {{result.selfLevel}} 级，两个结果会同时展示。</view>
+    </view>
+  </view>
+
+  <view class="self-level-card">
+    <view>
+      <view class="card-kicker">第一步</view>
+      <view class="card-title">选择你的自评等级</view>
+    </view>
+    <picker
+      mode="selector"
+      range="{{levelOptions}}"
+      value="{{selfLevelIndex}}"
+      bindchange="selectSelfLevel"
+    >
+      <view class="level-picker">中羽 {{selfLevel}} 级 <text>⌄</text></view>
+    </picker>
+  </view>
+
+  <view class="question-heading">
+    <view class="card-kicker">第二步</view>
+    <view class="card-title">完成技能与场景题</view>
+  </view>
+
+  <view class="question-card" wx:for="{{questions}}" wx:key="id" wx:for-index="questionIndex">
+    <view class="question-top">
+      <view class="question-number">{{questionIndex + 1}}</view>
+      <view class="question-type">{{item.type}}</view>
+    </view>
+    <view class="question-title">{{item.title}}</view>
+    <radio-group
+      class="option-list"
+      data-question-id="{{item.id}}"
+      bindchange="answerQuestion"
+    >
+      <label
+        class="option-row {{answers[item.id] == optionIndex ? 'option-row-active' : ''}}"
+        wx:for="{{item.options}}"
+        wx:key="index"
+        wx:for-item="option"
+        wx:for-index="optionIndex"
+      >
+        <radio class="option-radio" value="{{optionIndex}}" color="#1d6a46" />
+        <text class="option-label">{{option.label}}</text>
+      </label>
+    </radio-group>
+  </view>
+
+  <view class="assessment-note">测评结果用于初始推荐。完成球局后，球友只能反馈“偏低、相符、偏高”，平台不会公开文字评价。</view>
+  <button class="submit-button" bindtap="submitAssessment">完成测评</button>
+  <view class="safe-bottom"></view>
+</view>

@@ -1,0 +1,123 @@
+<view class="page">
+  <view class="intro">
+    <view class="intro-kicker">发起一个新球局</view>
+    <view class="intro-title">把时间和招募条件说清楚，<br />把场地留给大家线下商量。</view>
+  </view>
+
+  <view class="notice-card">
+    <view class="notice-icon">i</view>
+    <view>
+      <view class="notice-title">平台不处理球馆和费用</view>
+      <view class="notice-copy">申请审核通过后，双方可查看联系方式并自行商定。</view>
+    </view>
+  </view>
+
+  <view class="form-card">
+    <view class="field-group">
+      <view class="field-label">球局名称 <text class="field-optional">选填</text></view>
+      <input
+        class="text-input"
+        maxlength="18"
+        placeholder="例如：下班轻松混双"
+        placeholder-class="placeholder"
+        value="{{title}}"
+        bindinput="updateTitle"
+      />
+    </view>
+
+    <view class="field-group">
+      <view class="field-label">球局类型</view>
+      <view class="option-grid">
+        <view
+          wx:for="{{typeOptions}}"
+          wx:key="*this"
+          class="type-option {{selectedType === item ? 'type-option-active' : ''}}"
+          data-value="{{item}}"
+          bindtap="selectType"
+        >{{item}}</view>
+      </view>
+    </view>
+
+    <view class="field-row">
+      <view class="field-group half-field">
+        <view class="field-label">日期</view>
+        <picker mode="date" value="{{date}}" bindchange="selectDate">
+          <view class="picker-input">{{date}} <text>›</text></view>
+        </picker>
+      </view>
+      <view class="field-group half-field">
+        <view class="field-label">开始时间</view>
+        <picker mode="time" value="{{time}}" bindchange="selectTime">
+          <view class="picker-input">{{time}} <text>›</text></view>
+        </picker>
+      </view>
+    </view>
+
+    <view class="field-row">
+      <view class="field-group half-field">
+        <view class="field-label">所在区域</view>
+        <picker
+          mode="selector"
+          range="{{districtOptions}}"
+          value="{{selectedDistrictIndex}}"
+          bindchange="selectDistrict"
+        >
+          <view class="picker-input">{{selectedDistrict}} <text>›</text></view>
+        </picker>
+      </view>
+      <view class="field-group half-field">
+        <view class="field-label">目标人数</view>
+        <picker
+          mode="selector"
+          range="{{targetOptions}}"
+          value="{{selectedTargetIndex}}"
+          bindchange="selectTarget"
+        >
+          <view class="picker-input">{{targetCount}} 人 <text>›</text></view>
+        </picker>
+      </view>
+    </view>
+
+    <view class="field-group">
+      <view class="field-label">接受的中羽等级</view>
+      <view class="level-row">
+        <picker
+          class="level-picker"
+          mode="selector"
+          range="{{levelOptions}}"
+          value="{{minLevelIndex}}"
+          bindchange="selectMinLevel"
+        >
+          <view class="picker-input level-input">{{minLevel}} 级</view>
+        </picker>
+        <view class="level-divider">至</view>
+        <picker
+          class="level-picker"
+          mode="selector"
+          range="{{levelOptions}}"
+          value="{{maxLevelIndex}}"
+          bindchange="selectMaxLevel"
+        >
+          <view class="picker-input level-input">{{maxLevel}} 级</view>
+        </picker>
+      </view>
+    </view>
+
+    <view class="field-group last-field">
+      <view class="field-label">补充说明 <text class="field-optional">选填</text></view>
+      <textarea
+        class="note-input"
+        maxlength="120"
+        placeholder="可以写打球强度、轮换方式或其他要求"
+        placeholder-class="placeholder"
+        value="{{note}}"
+        bindinput="updateNote"
+      ></textarea>
+      <view class="char-count">{{note.length}}/120</view>
+    </view>
+  </view>
+
+  <view class="publish-note">发布后由你审核申请者，通过后才会互相显示联系方式。</view>
+  <button class="publish-button" loading="{{submitting}}" disabled="{{submitting}}" bindtap="publishGame">发布球局</button>
+  <view class="safe-bottom"></view>
+</view>

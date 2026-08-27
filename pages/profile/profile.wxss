@@ -1,0 +1,284 @@
+.page {
+  min-height: 100vh;
+  box-sizing: border-box;
+  padding: 28rpx;
+}
+
+.profile-card {
+  position: relative;
+  overflow: hidden;
+  padding: 34rpx 30rpx 28rpx;
+  border-radius: 36rpx;
+  background: linear-gradient(145deg, #143d2b, #20744d);
+  box-shadow: 0 20rpx 44rpx rgba(20, 75, 48, 0.17);
+  color: #ffffff;
+}
+
+.profile-decoration {
+  position: absolute;
+  right: -120rpx;
+  top: -140rpx;
+  width: 340rpx;
+  height: 340rpx;
+  border: 2rpx solid rgba(215, 255, 114, 0.18);
+  border-radius: 50%;
+}
+
+.profile-main,
+.tag-row,
+.stats-row,
+.section-heading,
+.rating-row,
+.feedback-row,
+.contact-row,
+.menu-row {
+  display: flex;
+  align-items: center;
+}
+
+.avatar {
+  position: relative;
+  display: flex;
+  flex-shrink: 0;
+  align-items: center;
+  justify-content: center;
+  width: 112rpx;
+  height: 112rpx;
+  margin-right: 26rpx;
+  border: 4rpx solid rgba(215, 255, 114, 0.7);
+  border-radius: 38rpx;
+  background: rgba(255, 255, 255, 0.12);
+  color: #d7ff72;
+  font-size: 42rpx;
+  font-weight: 700;
+}
+
+.pigeon-badge {
+  position: absolute;
+  right: -26rpx;
+  bottom: -9rpx;
+  padding: 5rpx 10rpx;
+  border: 3rpx solid #1a5a3d;
+  border-radius: 16rpx;
+  background: #ed6f59;
+  color: #ffffff;
+  font-size: 17rpx;
+  white-space: nowrap;
+}
+
+.identity {
+  position: relative;
+  flex: 1;
+}
+
+.name {
+  font-size: 36rpx;
+  font-weight: 700;
+}
+
+.location {
+  margin-top: 9rpx;
+  color: rgba(255, 255, 255, 0.68);
+  font-size: 21rpx;
+}
+
+.tag-row {
+  flex-wrap: wrap;
+  margin-top: 14rpx;
+}
+
+.profile-tag {
+  margin-right: 9rpx;
+  padding: 6rpx 12rpx;
+  border-radius: 13rpx;
+  background: rgba(215, 255, 114, 0.12);
+  color: #d7ff72;
+  font-size: 18rpx;
+}
+
+.stats-row {
+  position: relative;
+  justify-content: space-around;
+  margin-top: 32rpx;
+  padding-top: 26rpx;
+  border-top: 1rpx solid rgba(255, 255, 255, 0.14);
+}
+
+.stat-item {
+  flex: 1;
+  text-align: center;
+}
+
+.stat-value {
+  font-size: 30rpx;
+  font-weight: 700;
+}
+
+.stat-label {
+  margin-top: 8rpx;
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 18rpx;
+}
+
+.stat-divider {
+  width: 1rpx;
+  height: 46rpx;
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.section-card,
+.menu-card {
+  margin-top: 22rpx;
+  padding: 28rpx;
+  border: 1rpx solid #e1e7e1;
+  border-radius: 29rpx;
+  background: #ffffff;
+}
+
+.section-heading {
+  justify-content: space-between;
+}
+
+.section-kicker {
+  color: #89928b;
+  font-size: 19rpx;
+  letter-spacing: 2rpx;
+}
+
+.section-title {
+  margin-top: 7rpx;
+  font-size: 28rpx;
+  font-weight: 700;
+}
+
+.text-button {
+  background: transparent;
+  color: #1d6a46;
+  font-size: 21rpx;
+}
+
+.rating-row {
+  margin-top: 26rpx;
+}
+
+.rating-block {
+  flex: 1;
+  padding: 22rpx;
+  border-radius: 22rpx;
+  text-align: center;
+}
+
+.primary-rating {
+  background: #183f2d;
+  color: #ffffff;
+}
+
+.secondary-rating {
+  background: #edf5e8;
+  color: #355b3c;
+}
+
+.rating-number {
+  font-size: 44rpx;
+  font-weight: 700;
+}
+
+.rating-label {
+  margin-top: 6rpx;
+  color: inherit;
+  font-size: 19rpx;
+  opacity: 0.7;
+}
+
+.rating-connector {
+  width: 42rpx;
+  height: 2rpx;
+  background: #d9e1da;
+}
+
+.feedback-row {
+  justify-content: center;
+  margin-top: 20rpx;
+  color: #68746b;
+  font-size: 20rpx;
+}
+
+.feedback-dot {
+  width: 12rpx;
+  height: 12rpx;
+  margin-right: 10rpx;
+  border-radius: 50%;
+  background: #8dc343;
+}
+
+.credit-explain,
+.contact-note {
+  margin-top: 18rpx;
+  color: #778178;
+  font-size: 20rpx;
+  line-height: 1.65;
+}
+
+.privacy-pill {
+  padding: 8rpx 15rpx;
+  border-radius: 17rpx;
+  background: #eaf4ec;
+  color: #2e7550;
+  font-size: 19rpx;
+}
+
+.contact-row {
+  margin-top: 20rpx;
+  padding: 18rpx 20rpx;
+  border-radius: 18rpx;
+  background: #f6f8f6;
+}
+
+.contact-type {
+  width: 78rpx;
+  color: #8a938c;
+  font-size: 20rpx;
+}
+
+.contact-value {
+  color: #34453a;
+  font-size: 22rpx;
+  font-weight: 600;
+}
+
+.menu-card {
+  padding: 0 28rpx;
+}
+
+.menu-row {
+  padding: 24rpx 0;
+  border-bottom: 1rpx solid #edf1ed;
+}
+
+.last-menu {
+  border-bottom: 0;
+}
+
+.menu-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 52rpx;
+  height: 52rpx;
+  margin-right: 18rpx;
+  border-radius: 17rpx;
+  background: #edf3ee;
+  color: #326046;
+  font-size: 19rpx;
+  font-weight: 700;
+}
+
+.menu-label {
+  flex: 1;
+  font-size: 23rpx;
+}
+
+.menu-arrow {
+  color: #abb2ac;
+  font-size: 36rpx;
+}

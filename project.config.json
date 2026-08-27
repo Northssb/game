@@ -1,5 +1,6 @@
 {
   "appid": "touristappid",
+  "libVersion": "2.30.4",
   "compileType": "miniprogram",
   "projectname": "game",
   "description": "微信小程序开发骨架",

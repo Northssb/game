@@ -1,0 +1,5 @@
+page {
+  min-height: 100%;
+  background: #101828;
+  color: #ffffff;
+}

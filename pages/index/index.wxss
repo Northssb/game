@@ -1,0 +1,33 @@
+.page {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  padding: 48rpx;
+}
+
+.title {
+  font-size: 60rpx;
+  font-weight: 700;
+}
+
+.count {
+  margin-top: 56rpx;
+  color: #7dd3fc;
+  font-size: 40rpx;
+}
+
+.button {
+  width: 320rpx;
+  margin-top: 40rpx;
+  background: #0ea5e9;
+  color: #ffffff;
+}
+
+.status {
+  margin-top: 40rpx;
+  color: #98a2b3;
+  font-size: 28rpx;
+}

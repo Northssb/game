@@ -1,0 +1,12 @@
+{
+  "pages": [
+    "pages/index/index"
+  ],
+  "window": {
+    "navigationBarTitleText": "我的微信小程序",
+    "navigationBarBackgroundColor": "#101828",
+    "navigationBarTextStyle": "white",
+    "backgroundColor": "#101828"
+  },
+  "sitemapLocation": "sitemap.json"
+}
